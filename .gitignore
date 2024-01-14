@@ -1,0 +1,33 @@
+# .gitignore
+
+# Escludere il file client_secret.json
+#client_secret_220229269064-k7h3aakh5kraeko4cqappknho9qqig3n.apps.googleusercontent.com.json
+client_secret.json
+
+
+
+# Altri file comuni da escludere
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
