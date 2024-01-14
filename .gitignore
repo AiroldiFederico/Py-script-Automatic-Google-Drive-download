@@ -3,8 +3,13 @@
 # Escludere il file client_secret.json
 #client_secret_220229269064-k7h3aakh5kraeko4cqappknho9qqig3n.apps.googleusercontent.com.json
 client_secret.json
+credentials.json
+token.pickle
 
 
+
+# Escludere l'ambiente virtuale
+myenv/
 
 # Altri file comuni da escludere
 *.pyc

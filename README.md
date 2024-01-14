@@ -1,82 +1,110 @@
-
-
 # Google Drive Folder Downloader
 
-This Python script allows you to download all files from a specified Google Drive folder to a local folder on your computer.
+## Descrizione
+Questo script Python è progettato per scaricare tutti i file presenti in una specifica cartella di Google Drive su una cartella locale del tuo computer. È utile per automatizzare il processo di download di file da Google Drive senza doverli scaricare manualmente uno per uno.
 
-## Features
+## Caratteristiche
+- Scarica tutti i file da una specifica cartella di Google Drive.
+- Ignora le sottocartelle per una gestione più semplice e diretta.
+- Utilizza l'API di Google Drive per l'accesso e il download dei file.
 
-- Authenticate using Google OAuth 2.0
-- Download all files from a specified Google Drive folder
-- Save files to a specified local directory
+## Come Funziona
+Lo script si collega a Google Drive tramite l'API di Google, cerca tutti i file presenti in una cartella specificata dall'utente, e li scarica in una cartella locale sul computer dell'utente.
 
-## Prerequisites
-
+## Prerequisiti
 - Python 3
-- Google Cloud Platform account
-- Google Drive API enabled
-- `client_secret.json` file for OAuth 2.0 authentication
+- Accesso a Internet
+- Account Google
 
-## Setup Instructions
-
-### Step 1: Enable Google Drive API and Obtain `client_secret.json`
-
-1. **Access Google Cloud Console**: Go to [Google Cloud Console](https://console.cloud.google.com/).
-2. **Create a New Project**: Navigate to "IAM & Admin" > "Manage Resources", click "CREATE PROJECT", enter project details, and click "CREATE".
-3. **Enable Google Drive API**: Select your project, go to "API & Services" > "Dashboard", click "+ ENABLE APIS AND SERVICES", find and enable "Google Drive API".
-4. **Create Credentials**: Go to "Credentials" page, click "CREATE CREDENTIALS", select "OAuth client ID", configure the consent screen, select "Desktop app", and create the credentials.
-5. **Download `client_secret.json`**: Once the credentials are created, download the `client_secret.json` file.
-
-
-### Step 2: Install Required Libraries
-
-Run the following command in your terminal to install the necessary Python libraries:
+## Installazione delle Librerie
+Esegui il seguente comando per installare le librerie Python necessarie:
 
 ```bash
 pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 ```
 
-These libraries are essential for interacting with the Google Drive API and handling authentication.
+## Configurazione dell'Ambiente Virtuale
 
-### Step 3: Set Up the Script
+L'uso di un ambiente virtuale è consigliato per gestire le dipendenze del progetto. Ecco come configurarlo:
 
-Place the `client_secret.json` file, which you obtained from the Google Cloud Platform, in the same directory as your Python script. This file is required for authenticating with the Google Drive API.
+### Creazione dell'Ambiente Virtuale
+- Apri il terminale e naviga alla directory del progetto.
+- Esegui il seguente comando per creare un ambiente virtuale:
+  ```bash
+  python -m venv myenv
+  ```
+  Sostituisci `myenv` con il nome che desideri dare al tuo ambiente virtuale.
 
-### Step 4: Usage
+### Attivazione dell'Ambiente Virtuale
+- Attiva l'ambiente virtuale con il comando:
+  - Su Windows:
+    ```bash
+    myenv\Scripts\activate
+    ```
+  - Su macOS/Linux:
+    ```bash
+    source myenv/bin/activate
+    ```
 
-1. **Run the Script**: Execute the Python script. It will prompt you for the Google Drive folder URL and the local destination folder path.
-2. **Authenticate**: A web browser window will open for authentication. Log in to your Google account and authorize the script to access your Google Drive.
-3. **Downloading Files**: The script will start downloading the files from the specified Google Drive folder to the designated local directory.
+### Installazione delle Dipendenze nell'Ambiente Virtuale
+- Con l'ambiente virtuale attivo, installa le librerie richieste:
+  ```bash
+  pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+  ```
 
-### Creating a Virtual Environment (Optional)
+### Disattivazione dell'Ambiente Virtuale
+- Quando hai finito di lavorare nel progetto, puoi disattivare l'ambiente virtuale con:
+  ```bash
+  deactivate
+  ```
 
-Creating a virtual environment is recommended to avoid conflicts with other Python projects or libraries.
+## Comandi per Eseguire lo Script
 
-1. **Create a Virtual Environment**:
+Assicurati che l'ambiente virtuale sia attivo e che tutte le dipendenze siano state installate. Poi segui questi passaggi:
+
+1. **Esegui lo Script**:
    ```bash
-   python -m venv myenv
+   python nome_script.py
    ```
-2. **Activate the Environment**:
-   - On Windows: `myenv\Scripts\activate`
-   - On macOS/Linux: `source myenv/bin/activate`
-3. **Install Libraries in the Virtual Environment**:
-   ```bash
-   pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-   ```
-4. **Deactivate the Environment**:
-   ```bash
-   deactivate
-   ```
+   Sostituisci `nome_script.py` con il nome effettivo del tuo file Python.
 
-### Notes
+2. **Inserisci l'URL della Cartella di Google Drive** quando richiesto dallo script.
 
-- Ensure you have the necessary permissions to access the files in the specified Google Drive folder.
-- Handle your `client_secret.json` file securely as it contains sensitive information.
+3. **Inserisci il Percorso della Cartella Locale** dove desideri salvare i file scaricati.
 
-### Troubleshooting
+4. **Completa il Processo di Autenticazione** nel browser che si apre.
 
-If you encounter any issues:
-- Ensure your Python version is compatible with the libraries.
-- Verify the correctness of your `client_secret.json` file.
-- Check your internet connection and permissions on Google Drive.
+
+---
+
+Ora passerò alla seconda parte, che includerà i dettagli su come ottenere il `credentials.json` e altre informazioni.
+
+---
+
+## Ottenimento del File `credentials.json`
+
+Per utilizzare lo script, hai bisogno di un file `credentials.json`, che permette l'autenticazione con l'API di Google Drive. Ecco come ottenerlo:
+
+### 1. Configura Google Cloud Platform
+- Vai su [Google Cloud Console](https://console.cloud.google.com/).
+- Crea un nuovo progetto o seleziona un progetto esistente.
+- Naviga in "API & Services" > "Dashboard" e abilita l'API di Google Drive per il tuo progetto.
+
+### 2. Crea le Credenziali OAuth
+- Nella Google Cloud Console, vai alla pagina "Credentials".
+- Clicca su "Create Credentials" e seleziona "OAuth client ID".
+- Configura lo schermo di consenso OAuth fornendo le informazioni richieste.
+- Sotto "Application type", scegli "Desktop app" e dai un nome alla tua credenziale.
+- Scarica il file `credentials.json` dopo aver creato le credenziali.
+
+## Uso dello Script
+- Posiziona il file `credentials.json` nella stessa directory dello script.
+- Esegui lo script Python. Ti verrà chiesto di inserire l'URL della cartella Google Drive e il percorso della cartella locale dove desideri salvare i file.
+- Segui la procedura di autenticazione nel browser che si apre automaticamente.
+
+## Autore
+Federico Airoldi, BG Italy 
+
+## Data e Versione
+ Versione 1.0  -> 3 Gennaio 2024
 
